@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef } from 'react'
+import type { HTMLAttributes } from 'react'
 
-interface GlyphMatrixProps extends React.HTMLAttributes<HTMLCanvasElement> {
+interface GlyphMatrixProps extends HTMLAttributes<HTMLCanvasElement> {
   glyphs?: string
   cellSize?: number
   mutationRate?: number
@@ -12,28 +13,34 @@ interface GlyphMatrixProps extends React.HTMLAttributes<HTMLCanvasElement> {
   highlightStrength?: number
 }
 
-function cssColorToRgb(hex: string) {
-  const probe = document.createElement("canvas")
+function cssColorToRgb(color: string) {
+  let resolved = color.trim()
+  if (resolved.startsWith('var(')) {
+    const name = resolved.slice(4, -1).trim()
+    resolved =
+      getComputedStyle(document.documentElement).getPropertyValue(name).trim() || '#000000'
+  }
+  const probe = document.createElement('canvas')
   probe.width = 1
   probe.height = 1
-  const ctx = probe.getContext("2d")
+  const ctx = probe.getContext('2d')
   if (!ctx) return { r: 0, g: 0, b: 0 }
-  ctx.fillStyle = "#000"
-  ctx.fillStyle = hex
+  ctx.fillStyle = '#000'
+  ctx.fillStyle = resolved
   ctx.fillRect(0, 0, 1, 1)
   const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data
   return { r, g, b }
 }
 
 export function GlyphMatrix({
-  glyphs = "01·•+*/\\<>=",
+  glyphs = '01·•+*/\\<>=',
   cellSize = 14,
   mutationRate = 0.04,
   interval = 90,
   className,
   fadeBottom = 0.6,
-  color = "#6B7280",
-  highlightColor = "#a855f7",
+  color = '#6B7280',
+  highlightColor = '#a855f7',
   highlightRadius = 110,
   highlightStrength = 0.9,
   style,
@@ -56,7 +63,7 @@ export function GlyphMatrix({
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const ctx = canvas.getContext("2d")
+    const ctx = canvas.getContext('2d')
     if (!ctx) return
 
     let cols = 0
@@ -76,8 +83,8 @@ export function GlyphMatrix({
       mouseRef.current = { x: -1000, y: -1000 }
     }
 
-    window.addEventListener("mousemove", onMouseMove)
-    window.addEventListener("mouseleave", onMouseLeave)
+    window.addEventListener('mousemove', onMouseMove)
+    window.addEventListener('mouseleave', onMouseLeave)
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1
@@ -90,12 +97,10 @@ export function GlyphMatrix({
       cols = Math.ceil(w / cellSize)
       rows = Math.ceil(h / cellSize)
 
-      cells = new Array(cols * rows)
-        .fill(0)
-        .map(() => glyphs[Math.floor(Math.random() * glyphs.length)])
-      alphas = new Array(cols * rows)
-        .fill(0)
-        .map(() => 0.05 + Math.random() * 0.35)
+      cells = Array.from({ length: cols * rows }, () =>
+        glyphs[Math.floor(Math.random() * glyphs.length)],
+      )
+      alphas = Array.from({ length: cols * rows }, () => 0.05 + Math.random() * 0.35)
     }
 
     const draw = () => {
@@ -103,7 +108,7 @@ export function GlyphMatrix({
       ctx.clearRect(0, 0, w, h)
 
       ctx.font = `${cellSize - 2}px ui-monospace, SFMono-Regular, Menlo, monospace`
-      ctx.textBaseline = "top"
+      ctx.textBaseline = 'top'
 
       const { r: br, g: bg, b: bb, a: baseAlpha } = rgbaRef.current
       const { r: hr, g: hg, b: hb } = hlRgbRef.current
@@ -166,8 +171,8 @@ export function GlyphMatrix({
       stopped = true
       cancelAnimationFrame(raf)
       ro.disconnect()
-      window.removeEventListener("mousemove", onMouseMove)
-      window.removeEventListener("mouseleave", onMouseLeave)
+      window.removeEventListener('mousemove', onMouseMove)
+      window.removeEventListener('mouseleave', onMouseLeave)
     }
   }, [glyphs, cellSize, mutationRate, interval, fadeBottom, highlightRadius, highlightStrength])
 
@@ -175,7 +180,7 @@ export function GlyphMatrix({
     <canvas
       ref={canvasRef}
       className={className}
-      style={{ width: "100%", height: "100%", display: "block", cursor: "default", ...style }}
+      style={{ width: '100%', height: '100%', display: 'block', cursor: 'default', ...style }}
       aria-hidden="true"
       {...props}
     />

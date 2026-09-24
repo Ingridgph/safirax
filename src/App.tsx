@@ -1,8 +1,6 @@
-import { Header } from './components/Header/Header'
-import { Hero } from './sections/Hero/Hero'
-import { Portfolio } from './sections/Portfolio/Portfolio'
-import './styles/globals.css'
-import './styles/animations.css'
+import { Header } from '@/components/layout/Header/Header'
+import { Hero } from '@/features/hero/Hero'
+import { Portfolio } from '@/features/portfolio/Portfolio'
 
 function App() {
   return (

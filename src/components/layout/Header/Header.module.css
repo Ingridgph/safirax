@@ -4,13 +4,13 @@
   left: 0;
   right: 0;
   z-index: 100;
-  background: #6D00CF;
+  background: var(--color-purple-600);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(137, 21, 239, 0.08);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-purple-400) 8%, transparent);
 }
 
-.header-inner {
+.inner {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
@@ -19,57 +19,52 @@
   padding: 0.875rem 2rem;
 }
 
-.header-left {
+.left {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.header-eye {
-  width: 70px;
-  height: auto;
-}
-
-.header-nav {
+.nav {
   display: flex;
   gap: 2rem;
   justify-content: center;
 }
 
-.header-link {
-  font-family: "Source Code Pro", monospace;
+.link {
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 700;
-  color: rgba(224, 189, 255, 0.5);
+  color: color-mix(in srgb, var(--color-purple-100) 50%, transparent);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.header-link:hover,
-.header-link.active {
-  color: #E0BDFF;
+.link:hover,
+.linkActive {
+  color: var(--color-purple-100);
 }
 
-.header-right {
+.right {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-.header-btn {
-  font-family: "Source Code Pro", monospace;
+.btn {
+  font-family: var(--font-mono);
   font-size: 0.8rem;
   font-weight: 700;
   padding: 0.625rem 1.25rem;
   border-radius: 10px;
   border: none;
-  background: #8915EF;
-  color: #E0BDFF;
+  background: var(--color-purple-400);
+  color: var(--color-purple-100);
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.header-btn:hover {
-  background: #621E9E;
+.btn:hover {
+  background: var(--color-purple-500);
   transform: translateY(-1px);
 }
