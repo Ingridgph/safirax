@@ -1,0 +1,189 @@
+@property --a {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-spin {
+  to { --a: 1turn; }
+}
+
+.portfolio {
+  background: #1C0034;
+  padding: calc(1.5rem + 70px) 2rem 3rem;
+  scroll-margin-top: 70px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.portfolio::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 15%, rgba(137, 21, 239, 0.2) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(106, 0, 207, 0.15) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 40% at 20% 50%, rgba(194, 165, 232, 0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 30% at 80% 30%, rgba(137, 21, 239, 0.1) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.portfolio-label {
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #8915EF;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-title {
+  font-family: "Press Start 2P", system-ui;
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  font-weight: 400;
+  color: #E0BDFF;
+  margin-bottom: 1rem;
+}
+
+.portfolio-subtitle {
+  font-family: "Source Code Pro", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(224, 189, 255, 0.5);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.portfolio-card {
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: transparent;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(137, 21, 239, 0.15);
+}
+
+.card-border {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  padding: 2px;
+  pointer-events: none;
+  background:
+    linear-gradient(#1C0034, #1C0034) content-box,
+    conic-gradient(from var(--a, 0deg), #C2A5E8, #6D00CF, #C2A5E8, #6D00CF, #C2A5E8);
+  animation: border-spin 6s linear infinite;
+}
+
+.portfolio-card > :not(.card-border) {
+  position: relative;
+  z-index: 1;
+}
+
+.portfolio-card-title {
+  font-family: "Source Code Pro", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #E0BDFF;
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+}
+
+.portfolio-card-img {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background: rgba(137, 21, 239, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-card-icon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.5;
+}
+
+.portfolio-card-text {
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(224, 189, 255, 0.6);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  flex: 1;
+}
+
+.portfolio-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.portfolio-tag {
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.625rem;
+  border-radius: 6px;
+  background: rgba(137, 21, 239, 0.12);
+  color: #8915EF;
+}
+
+.portfolio-card-link {
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #E0BDFF;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: gap 0.3s ease;
+  margin-top: auto;
+}
+
+.portfolio-card:hover .portfolio-card-link {
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .portfolio { padding: 3rem 1rem; }
+}

@@ -1,0 +1,75 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: #6D00CF;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(137, 21, 239, 0.08);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0.875rem 2rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.header-eye {
+  width: 70px;
+  height: auto;
+}
+
+.header-nav {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.header-link {
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(224, 189, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.header-link:hover,
+.header-link.active {
+  color: #E0BDFF;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header-btn {
+  font-family: "Source Code Pro", monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.625rem 1.25rem;
+  border-radius: 10px;
+  border: none;
+  background: #8915EF;
+  color: #E0BDFF;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.header-btn:hover {
+  background: #621E9E;
+  transform: translateY(-1px);
+}
