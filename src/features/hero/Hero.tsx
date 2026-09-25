@@ -20,7 +20,7 @@ export function Hero() {
 
   return (
     <section className={styles.hero}>
-      <Aurora className="z-0" />
+      <Aurora />
       <div className={styles.content}>
         <Logo variant="hero" className="w-[240px] max-[480px]:w-[170px]" />
         <h1 className={styles.title}>SafiraX</h1>
