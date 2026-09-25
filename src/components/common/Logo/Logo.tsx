@@ -16,9 +16,9 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
       >
         <defs>
           <linearGradient id="h-metal" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="var(--color-purple-100)" />
+            <stop offset="0%" stopColor="var(--color-cyan)" />
             <stop offset="50%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="var(--color-purple-100)" />
+            <stop offset="100%" stopColor="var(--color-magenta)" />
           </linearGradient>
           <clipPath id="h-clip">
             <path d="M30 60 Q70 20 110 20 Q150 20 190 60 Q150 100 110 100 Q70 100 30 60Z" />
@@ -76,21 +76,21 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
         </clipPath>
 
         <linearGradient id="metal-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="var(--color-purple-800)" />
-          <stop offset="20%" stopColor="var(--color-purple-700)" />
-          <stop offset="40%" stopColor="var(--color-purple-400)" />
-          <stop offset="50%" stopColor="var(--color-purple-50)" />
-          <stop offset="60%" stopColor="var(--color-purple-400)" />
-          <stop offset="80%" stopColor="var(--color-purple-700)" />
-          <stop offset="100%" stopColor="var(--color-purple-800)" />
+          <stop offset="0%" stopColor="var(--color-violet)" />
+          <stop offset="20%" stopColor="var(--color-magenta)" />
+          <stop offset="40%" stopColor="var(--color-cyan)" />
+          <stop offset="50%" stopColor="var(--color-lavender)" />
+          <stop offset="60%" stopColor="var(--color-cyan)" />
+          <stop offset="80%" stopColor="var(--color-magenta)" />
+          <stop offset="100%" stopColor="var(--color-violet)" />
         </linearGradient>
 
         <linearGradient id="highlight-beam" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#c9a0ff" stopOpacity="0" />
-          <stop offset="40%" stopColor="#d9b3ff" stopOpacity="0.15" />
-          <stop offset="50%" stopColor="#e8ccff" stopOpacity="0.25" />
-          <stop offset="60%" stopColor="#d9b3ff" stopOpacity="0.15" />
-          <stop offset="100%" stopColor="#c9a0ff" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--color-lavender)" stopOpacity="0" />
+          <stop offset="40%" stopColor="var(--color-lavender)" stopOpacity="0.15" />
+          <stop offset="50%" stopColor="var(--color-lavender)" stopOpacity="0.25" />
+          <stop offset="60%" stopColor="var(--color-lavender)" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="var(--color-lavender)" stopOpacity="0" />
           <animate
             attributeName="x1"
             values="-50%;0%;50%;100%;150%"
@@ -108,12 +108,12 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
         <filter id="eye-3d" x="-40%" y="-40%" width="180%" height="180%">
           <feGaussianBlur
             in="SourceAlpha"
-            stdDeviation="4"
+            stdDeviation="2"
             result="shadowBlur1"
           />
-          <feOffset dx="-2" dy="-2" result="shadowOffset1" />
+          <feOffset dx="-1" dy="-1" result="shadowOffset1" />
           <feFlood
-            floodColor="var(--color-purple-200)"
+            floodColor="var(--color-cyan)"
             floodOpacity="1"
             result="shadowColor1"
           />
@@ -126,12 +126,12 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
 
           <feGaussianBlur
             in="SourceAlpha"
-            stdDeviation="2"
+            stdDeviation="1"
             result="shadowBlur2"
           />
-          <feOffset dx="-1" dy="-1" result="shadowOffset2" />
+          <feOffset dx="-0.5" dy="-0.5" result="shadowOffset2" />
           <feFlood
-            floodColor="var(--color-purple-200)"
+            floodColor="var(--color-cyan)"
             floodOpacity="1"
             result="shadowColor2"
           />
@@ -144,10 +144,10 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
 
           <feGaussianBlur
             in="SourceGraphic"
-            stdDeviation="6"
+            stdDeviation="3.5"
             result="glowBlur"
           />
-          <feFlood floodColor="var(--color-purple-400)" floodOpacity="0.5" result="glowColor" />
+          <feFlood floodColor="var(--color-magenta)" floodOpacity="0.22" result="glowColor" />
           <feComposite
             in="glowColor"
             in2="glowBlur"
@@ -167,7 +167,7 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
       <g>
         <path
           d="M30 60 Q70 20 110 20 Q150 20 190 60 Q150 100 110 100 Q70 100 30 60Z"
-          fill="var(--color-purple-50)"
+          fill="var(--color-lavender)"
           stroke="none"
         />
         <g clipPath="url(#eye-clip)">

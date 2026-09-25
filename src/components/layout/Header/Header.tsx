@@ -27,9 +27,6 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <div className={styles.right}>
-          <button className={styles.btn}>Fale Conosco</button>
-        </div>
       </div>
     </header>
   )

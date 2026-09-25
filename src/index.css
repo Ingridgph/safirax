@@ -1,20 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-purple-950: #190030;
-  --color-purple-900: #1C0034;
-  --color-purple-800: #1a0035;
-  --color-purple-700: #49008A;
-  --color-purple-600: #6D00CF;
-  --color-purple-500: #621E9E;
-  --color-purple-400: #8915EF;
-  --color-purple-300: #b44aff;
-  --color-purple-200: #C2A5E8;
-  --color-purple-100: #E0BDFF;
-  --color-purple-50: #A48CC4;
+  --color-violet: #8B2FFF;
+  --color-magenta: #FF2E88;
+  --color-cyan: #00E5FF;
+  --color-lavender: #EDE9FE;
 
   --font-display: 'Press Start 2P', system-ui, sans-serif;
   --font-mono: 'Source Code Pro', 'SFMono-Regular', monospace;
+
+  --color-slate-950: #020617;
+
+  --animate-aurora: aurora 10s ease-in-out infinite alternate;
+  --animate-aurora-zoom: aurora-zoom 18s ease-in-out infinite alternate;
+
+  @keyframes aurora {
+    0% { transform: scale(1) translate(0px, 0px); }
+    33% { transform: scale(1.1) translate(30px, -50px); }
+    66% { transform: scale(0.9) translate(-20px, 20px); }
+    100% { transform: scale(1.05) translate(40px, 40px); }
+  }
+
+  @keyframes aurora-zoom {
+    from { transform: scale(1); }
+    to { transform: scale(1.2); }
+  }
 }
 
 *, *::before, *::after {
@@ -29,14 +39,14 @@ html {
 
 body {
   font-family: var(--font-mono);
-  background: var(--color-purple-100);
-  color: var(--color-purple-900);
+  background: var(--color-lavender);
+  color: color-mix(in srgb, var(--color-violet) 50%, var(--color-slate-950));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--color-purple-400);
-  color: var(--color-purple-100);
+  background: var(--color-cyan);
+  color: var(--color-slate-950);
 }

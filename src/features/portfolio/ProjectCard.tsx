@@ -22,7 +22,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             className={styles.cardIcon}
             viewBox="0 0 24 24"
             fill="none"
-            stroke="var(--color-purple-600)"
+            stroke="var(--color-cyan)"
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"

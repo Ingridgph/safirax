@@ -9,7 +9,7 @@
 }
 
 .portfolio {
-  background: var(--color-purple-900);
+  background: color-mix(in srgb, var(--color-violet) 30%, var(--color-slate-950));
   padding: calc(1.5rem + 70px) 2rem 3rem;
   scroll-margin-top: 70px;
   height: 100vh;
@@ -24,10 +24,10 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 80% 50% at 50% 15%, color-mix(in srgb, var(--color-purple-400) 20%, transparent) 0%, transparent 100%),
-    radial-gradient(ellipse 60% 40% at 50% 100%, color-mix(in srgb, var(--color-purple-600) 15%, transparent) 0%, transparent 100%),
-    radial-gradient(ellipse 50% 40% at 20% 50%, color-mix(in srgb, var(--color-purple-200) 8%, transparent) 0%, transparent 100%),
-    radial-gradient(ellipse 40% 30% at 80% 30%, color-mix(in srgb, var(--color-purple-400) 10%, transparent) 0%, transparent 100%);
+    radial-gradient(ellipse 80% 50% at 50% 15%, color-mix(in srgb, var(--color-magenta) 20%, transparent) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, color-mix(in srgb, var(--color-violet) 15%, transparent) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 40% at 20% 50%, color-mix(in srgb, var(--color-cyan) 8%, transparent) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 30% at 80% 30%, color-mix(in srgb, var(--color-magenta) 10%, transparent) 0%, transparent 100%);
   pointer-events: none;
 }
 
@@ -42,7 +42,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-purple-400);
+  color: var(--color-cyan);
   display: block;
   margin-bottom: 0.75rem;
 }
@@ -51,7 +51,7 @@
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 4vw, 2rem);
   font-weight: 400;
-  color: var(--color-purple-100);
+  color: var(--color-lavender);
   margin-bottom: 1rem;
 }
 
@@ -59,7 +59,7 @@
   font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 400;
-  color: color-mix(in srgb, var(--color-purple-100) 50%, transparent);
+  color: color-mix(in srgb, var(--color-lavender) 50%, transparent);
 }
 
 .grid {
@@ -82,7 +82,7 @@
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 30px color-mix(in srgb, var(--color-purple-400) 15%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--color-cyan) 18%, transparent);
 }
 
 .cardBorder {
@@ -93,8 +93,8 @@
   padding: 2px;
   pointer-events: none;
   background:
-    linear-gradient(var(--color-purple-900), var(--color-purple-900)) content-box,
-    conic-gradient(from var(--a, 0deg), var(--color-purple-200), var(--color-purple-600), var(--color-purple-200), var(--color-purple-600), var(--color-purple-200));
+    linear-gradient(color-mix(in srgb, var(--color-violet) 30%, var(--color-slate-950)), color-mix(in srgb, var(--color-violet) 30%, var(--color-slate-950))) content-box,
+    conic-gradient(from var(--a, 0deg), var(--color-cyan), var(--color-magenta), var(--color-cyan), var(--color-magenta), var(--color-cyan));
   animation: border-spin 6s linear infinite;
 }
 
@@ -107,7 +107,7 @@
   font-family: var(--font-mono);
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-purple-100);
+  color: var(--color-lavender);
   margin-bottom: 0.75rem;
   margin-top: 0;
 }
@@ -118,7 +118,7 @@
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 1rem;
-  background: color-mix(in srgb, var(--color-purple-400) 8%, transparent);
+  background: color-mix(in srgb, var(--color-magenta) 8%, transparent);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,7 +140,7 @@
   font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 400;
-  color: color-mix(in srgb, var(--color-purple-100) 60%, transparent);
+  color: color-mix(in srgb, var(--color-lavender) 60%, transparent);
   line-height: 1.65;
   margin-bottom: 1.25rem;
   flex: 1;
@@ -159,15 +159,15 @@
   font-weight: 700;
   padding: 0.25rem 0.625rem;
   border-radius: 6px;
-  background: color-mix(in srgb, var(--color-purple-400) 12%, transparent);
-  color: var(--color-purple-400);
+  background: color-mix(in srgb, var(--color-cyan) 12%, transparent);
+  color: var(--color-cyan);
 }
 
 .cardLink {
   font-family: var(--font-mono);
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--color-purple-100);
+  color: var(--color-lavender);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
