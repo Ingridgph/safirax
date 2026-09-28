@@ -22,7 +22,9 @@ export function Hero() {
     <section className={styles.hero}>
       <Aurora />
       <div className={styles.content}>
-        <Logo variant="hero" className="w-[240px] max-[480px]:w-[170px]" />
+        <Logo
+          className="w-[240px] drop-shadow-[0_6px_20px_rgba(0,0,0,0.6)]"
+        />
         <h1 className={styles.title}>SafiraX</h1>
         <button
           type="button"

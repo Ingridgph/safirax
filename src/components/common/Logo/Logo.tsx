@@ -1,81 +1,30 @@
+import { useId } from 'react'
 import { cn } from '@/lib/cn'
 import './Logo.module.css'
 
 interface LogoProps {
-  variant?: 'hero' | 'header'
   className?: string
 }
 
-export function Logo({ variant = 'hero', className }: LogoProps) {
-  if (variant === 'header') {
-    return (
-      <svg
-        className={cn('logo', className)}
-        viewBox="0 0 220 120"
-        aria-hidden="true"
-      >
-        <defs>
-          <linearGradient id="h-metal" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="var(--color-cyan)" />
-            <stop offset="50%" stopColor="#ffffff" />
-            <stop offset="100%" stopColor="var(--color-magenta)" />
-          </linearGradient>
-          <clipPath id="h-clip">
-            <path d="M30 60 Q70 20 110 20 Q150 20 190 60 Q150 100 110 100 Q70 100 30 60Z" />
-          </clipPath>
-        </defs>
-        <g clipPath="url(#h-clip)">
-          <circle cx="110" cy="60" r="37" fill="none" stroke="url(#h-metal)" strokeWidth="5" />
-          <polygon
-            fill="url(#h-metal)"
-            points="110,42 114,54 127,54 117,62 121,74 110,67 99,74 103,62 93,54 106,54"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              from="0 110 60"
-              to="360 110 60"
-              dur="4s"
-              repeatCount="indefinite"
-            />
-          </polygon>
-          <polygon
-            fill="url(#h-metal)"
-            points="110,34 116,52 135,52 120,63 125,81 110,70 95,81 100,63 85,52 104,52"
-          >
-            <animateTransform
-              attributeName="transform"
-              type="rotate"
-              from="0 110 60"
-              to="-360 110 60"
-              dur="6s"
-              repeatCount="indefinite"
-            />
-          </polygon>
-        </g>
-        <path
-          d="M30 60 Q70 20 110 20 Q150 20 190 60 Q150 100 110 100 Q70 100 30 60Z"
-          fill="none"
-          stroke="url(#h-metal)"
-          strokeWidth="5"
-        />
-      </svg>
-    )
-  }
+export function Logo({ className }: LogoProps) {
+  const uid = useId().replace(/:/g, '')
+  const clipId = `${uid}-eye-clip`
+  const strokeId = `${uid}-metal-stroke`
+  const beamId = `${uid}-highlight-beam`
+  const filterId = `${uid}-eye-3d`
 
   return (
     <svg
       className={cn('logo', className)}
       viewBox="0 0 220 120"
       aria-hidden="true"
-      role="img"
     >
       <defs>
-        <clipPath id="eye-clip">
+        <clipPath id={clipId}>
           <path d="M30 60 Q70 20 110 20 Q150 20 190 60 Q150 100 110 100 Q70 100 30 60Z" />
         </clipPath>
 
-        <linearGradient id="metal-stroke" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id={strokeId} x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="var(--color-violet)" />
           <stop offset="20%" stopColor="var(--color-magenta)" />
           <stop offset="40%" stopColor="var(--color-cyan)" />
@@ -85,11 +34,11 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
           <stop offset="100%" stopColor="var(--color-violet)" />
         </linearGradient>
 
-        <linearGradient id="highlight-beam" x1="0%" y1="0%" x2="100%" y2="0%">
+        <linearGradient id={beamId} x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="var(--color-lavender)" stopOpacity="0" />
-          <stop offset="40%" stopColor="var(--color-lavender)" stopOpacity="0.15" />
-          <stop offset="50%" stopColor="var(--color-lavender)" stopOpacity="0.25" />
-          <stop offset="60%" stopColor="var(--color-lavender)" stopOpacity="0.15" />
+          <stop offset="40%" stopColor="var(--color-lavender)" stopOpacity="0.2" />
+          <stop offset="50%" stopColor="#ffffff" stopOpacity="0.45" />
+          <stop offset="60%" stopColor="var(--color-lavender)" stopOpacity="0.2" />
           <stop offset="100%" stopColor="var(--color-lavender)" stopOpacity="0" />
           <animate
             attributeName="x1"
@@ -105,55 +54,28 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
           />
         </linearGradient>
 
-        <filter id="eye-3d" x="-40%" y="-40%" width="180%" height="180%">
-          <feGaussianBlur
-            in="SourceAlpha"
-            stdDeviation="2"
-            result="shadowBlur1"
-          />
+        <filter id={filterId} x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="shadowBlur1" />
           <feOffset dx="-1" dy="-1" result="shadowOffset1" />
           <feFlood
             floodColor="var(--color-cyan)"
-            floodOpacity="1"
+            floodOpacity="0.6"
             result="shadowColor1"
           />
-          <feComposite
-            in="shadowColor1"
-            in2="shadowOffset1"
-            operator="in"
-            result="shadow1"
-          />
+          <feComposite in="shadowColor1" in2="shadowOffset1" operator="in" result="shadow1" />
 
-          <feGaussianBlur
-            in="SourceAlpha"
-            stdDeviation="1"
-            result="shadowBlur2"
-          />
+          <feGaussianBlur in="SourceAlpha" stdDeviation="1" result="shadowBlur2" />
           <feOffset dx="-0.5" dy="-0.5" result="shadowOffset2" />
           <feFlood
             floodColor="var(--color-cyan)"
-            floodOpacity="1"
+            floodOpacity="0.6"
             result="shadowColor2"
           />
-          <feComposite
-            in="shadowColor2"
-            in2="shadowOffset2"
-            operator="in"
-            result="shadow2"
-          />
+          <feComposite in="shadowColor2" in2="shadowOffset2" operator="in" result="shadow2" />
 
-          <feGaussianBlur
-            in="SourceGraphic"
-            stdDeviation="3.5"
-            result="glowBlur"
-          />
-          <feFlood floodColor="var(--color-magenta)" floodOpacity="0.22" result="glowColor" />
-          <feComposite
-            in="glowColor"
-            in2="glowBlur"
-            operator="in"
-            result="glow"
-          />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="glowBlur" />
+          <feFlood floodColor="var(--color-magenta)" floodOpacity="0.18" result="glowColor" />
+          <feComposite in="glowColor" in2="glowBlur" operator="in" result="glow" />
 
           <feMerge>
             <feMergeNode in="shadow1" />
@@ -167,17 +89,17 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
       <g>
         <path
           d="M30 60 Q70 20 110 20 Q150 20 190 60 Q150 100 110 100 Q70 100 30 60Z"
-          fill="var(--color-lavender)"
+          fill="none"
           stroke="none"
         />
-        <g clipPath="url(#eye-clip)">
+        <g clipPath={`url(#${clipId})`}>
           <g>
             <circle
               cx="110"
               cy="60"
               r="37"
               fill="none"
-              stroke="url(#metal-stroke)"
+              stroke={`url(#${strokeId})`}
               strokeWidth="5"
             />
             <circle
@@ -185,19 +107,25 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
               cy="60"
               r="37"
               fill="none"
-              stroke="url(#highlight-beam)"
+              stroke={`url(#${beamId})`}
               strokeWidth="2"
             />
 
             <g>
               <polygon
-                fill="url(#metal-stroke)"
+                fill={`url(#${strokeId})`}
+                stroke={`url(#${strokeId})`}
+                strokeWidth="3"
+                strokeLinejoin="round"
+                strokeLinecap="round"
                 points="110,42 114,54 127,54 117,62 121,74 110,67 99,74 103,62 93,54 106,54"
               />
               <polygon
                 fill="none"
-                stroke="url(#highlight-beam)"
+                stroke={`url(#${beamId})`}
                 strokeWidth="1"
+                strokeLinejoin="round"
+                strokeLinecap="round"
                 points="110,42 114,54 127,54 117,62 121,74 110,67 99,74 103,62 93,54 106,54"
               />
               <animateTransform
@@ -211,13 +139,19 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
             </g>
             <g>
               <polygon
-                fill="url(#metal-stroke)"
+                fill={`url(#${strokeId})`}
+                stroke={`url(#${strokeId})`}
+                strokeWidth="3"
+                strokeLinejoin="round"
+                strokeLinecap="round"
                 points="110,34 116,52 135,52 120,63 125,81 110,70 95,81 100,63 85,52 104,52"
               />
               <polygon
                 fill="none"
-                stroke="url(#highlight-beam)"
+                stroke={`url(#${beamId})`}
                 strokeWidth="1"
+                strokeLinejoin="round"
+                strokeLinecap="round"
                 points="110,34 116,52 135,52 120,63 125,81 110,70 95,81 100,63 85,52 104,52"
               />
               <animateTransform
@@ -235,14 +169,14 @@ export function Logo({ variant = 'hero', className }: LogoProps) {
         <path
           d="M30 60 Q70 20 110 20 Q150 20 190 60 Q150 100 110 100 Q70 100 30 60Z"
           fill="none"
-          stroke="url(#metal-stroke)"
+          stroke={`url(#${strokeId})`}
           strokeWidth="5"
-          filter="url(#eye-3d)"
+          filter={`url(#${filterId})`}
         />
         <path
           d="M30 60 Q70 20 110 20 Q150 20 190 60 Q150 100 110 100 Q70 100 30 60Z"
           fill="none"
-          stroke="url(#highlight-beam)"
+          stroke={`url(#${beamId})`}
           strokeWidth="1.5"
         />
       </g>
